@@ -1,0 +1,30 @@
+.logo {
+    height: 50px;
+}
+
+.gal-image {
+    height: 100%;
+    width: 100%;
+    alignment: center;
+    padding: 2%;
+}
+
+.list li {
+    padding: .5em;
+    list-style: none;
+}
+
+#gallery tbody tr td {
+    height: 250px;
+    width: 25%;
+}
+
+#detail-image {
+    height: 100%;
+    width: 100%;
+}
+
+#pro-fav-images tbody tr td img {
+    height: 100px;
+    width: 100px;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nice Mice - Profile</title>
+    <link crossorigin="anonymous"
+          href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/slate/bootstrap.min.css"
+          integrity="sha384-FBPbZPVh+7ks5JJ70RJmIaqyGnvMbeJ5JQfEbW0Ac6ErfvEg9yG56JQJuMNptWsH"
+          rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="container">
+    <header class="row">
+        <div class="col"><img alt="logo" class="logo" src="img/mouselogo.png"></div>
+        <h1 class="col-11 text-left">Nice Mice</h1>
+    </header>
+    <nav class="row navbar navbar-expand navbar-dark bg-primary">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="profile.html">Profile</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="row" id="body">
+        <div class="col">
+            <form>
+                <ul class="list">
+                    <li>
+                        <label for="ed-name">Name:</label> <input id="ed-name"
+                                                                  maxlength="20" minlength="3"
+                                                                  name="ed-name" size="40" type="text"
+                                                                  value="Place Holder Jr"> <span id="pro-name">Place Holder Jr</span>
+                    </li>
+                    <li>
+                        <label for="ed-animal">Favorite Animal:</label> <input id="ed-animal"
+                                                                               maxlength="20" minlength="3"
+                                                                               name="ed-animal" size="40" type="text"
+                                                                               value="Teddy"> <span id="pro-animal">Teddy</span>
+                    </li>
+                    <li>
+                        <label for="ed-motd">Message of the day:</label> <input id="ed-motd"
+                                                                                maxlength="50"
+                                                                                minlength="5"
+                                                                                name="ed-motd"
+                                                                                size="40" type="text"
+                                                                                value="You're the apple of my day.">
+                        <span id="pro-motd">You're the apple of my day.</span>
+                    </li>
+                    <li id="li-updBtn">
+                        <h5>
+                            Submit Changes: <input class="btn btn-secondary" id="updUsrBtn" readonly type="submit">
+                        </h5>
+                    </li>
+                </ul>
+            </form>
+            <ul class="list">
+                <li id="li-togBtn">
+                    <h5>
+                        Update Profile:
+                        <button class="btn btn-secondary" id="updTogBtn">Update</button>
+                    </h5>
+                </li>
+                <li><h5>Favorite Pictures:</h5></li>
+                <li>
+                    <table id="pro-fav-images">
+                        <tbody>
+                        <tr>
+                            <td><a href="detail.html"><img alt="pro-image" src="img/1.jpeg"></a></td>
+                            <td><img alt="pro-image" src="img/2.jpeg"></td>
+                            <td><img alt="pro-image" src="img/3.jpeg"></td>
+                        </tr>
+                        <tr>
+                            <td><img alt="pro-image" src="img/4.jpeg"></td>
+                            <td><img alt="pro-image" src="img/5.png"></td>
+                            <td><img alt="pro-image" src="img/6.jpeg"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </ul>
+        </div>
+        <div class="col">
+            <h4>Message Board</h4>
+            <ul class="list" id="profile-comment-list">
+                <li>
+                    <form method="post" action="Comment">
+                        <label for="ed-comment">Comment:</label> <input id="ed-comment" name="ed-comment"
+                                                                        maxlength="100" minlength="10"
+                                                                        size="40" type="text" required>
+                        <input class="btn btn-secondary" content="Submit" id="createComBtn" readonly type="submit">
+                    </form>
+                </li>
+                <li>
+                    <h6 class="comment">2) What a terrible thing to say, sorry!</h6>
+                </li>
+                <li>
+                    <h6 class="comment">1) I hope you fall faster than a leaf in autumn.</h6>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <footer class="row">
+        <p class="col text-center">Created on 8/22/2019 by Mark Turchik</p>
+    </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
