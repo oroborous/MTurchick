@@ -6,6 +6,14 @@
         <element id="directory" name="classes">
           <element id="module-output" name="NiceMiceWebApp" />
         </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/lib/derby.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/derbyshared.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/derbytools.jar" />
+          <element id="directory" name="dbNiceMiceWebApp">
+            <element id="dir-copy" path="$PROJECT_DIR$/lib/dbNiceMiceWebApp" />
+          </element>
+        </element>
       </element>
       <element id="javaee-facet-resources" facet="NiceMiceWebApp/web/Web" />
     </root>
