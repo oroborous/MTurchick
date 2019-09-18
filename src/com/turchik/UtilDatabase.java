@@ -2,7 +2,8 @@ package com.turchik;
 
 import java.sql.*;
 
-public class DatabaseUtil {
+@SuppressWarnings("WeakerAccess")
+public class UtilDatabase {
     public static final String DRIVER_NAME = "jdbc:derby:";
     public static final String USERNAME = "mark";
     public static final String PASSWORD = "admin";

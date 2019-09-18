@@ -4,11 +4,47 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <servlet>
+        <servlet-name>ProfileCommentsServlet</servlet-name>
+        <servlet-class>com.turchik.ProfileCommentsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProfileCommentsServlet</servlet-name>
+        <url-pattern>/profileComments</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProfileFavoritesServlet</servlet-name>
+        <servlet-class>com.turchik.ProfileFavoritesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProfileFavoritesServlet</servlet-name>
+        <url-pattern>/profileFavorites</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProfileDetailsServlet</servlet-name>
+        <servlet-class>com.turchik.ProfileDetailsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProfileDetailsServlet</servlet-name>
+        <url-pattern>/profileDetails</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>CommentServlet</servlet-name>
         <servlet-class>com.turchik.CommentServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CommentServlet</servlet-name>
         <url-pattern>/Comment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GalleryImagesServlet</servlet-name>
+        <servlet-class>com.turchik.GalleryImagesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GalleryImagesServlet</servlet-name>
+        <url-pattern>/galleryImages</url-pattern>
     </servlet-mapping>
 </web-app>

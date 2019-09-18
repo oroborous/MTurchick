@@ -11,7 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import static com.turchik.DatabaseUtil.*;
+import static com.turchik.UtilDatabase.*;
 
 @WebServlet(name = "ListServlet", urlPatterns = "/list")
 public class ListServlet extends HttpServlet {
@@ -19,7 +19,7 @@ public class ListServlet extends HttpServlet {
     private PreparedStatement pStmt;
     private ResultSet rSet;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException
     {
         try{
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
@@ -37,11 +37,11 @@ public class ListServlet extends HttpServlet {
                 String page = rSet.getString(2).equals("p") ? "Profile" : "Image";
                 int imageId = rSet.getInt(3);
                 String content = rSet.getString(4);
-                html.append("<li>Comment Id: "+ commentId +"</li>");
-                html.append("<li>Host Page: "+ page +"</li>");
+                html.append("<li>Comment Id: ").append(commentId).append("</li>");
+                html.append("<li>Host Page: ").append(page).append("</li>");
                 if(page.equals("Image"))
-                    html.append("<li>Image Id: "+ imageId +"</li>");
-                html.append("<li>Content: "+ content +"</li><br/><hr/>");
+                    html.append("<li>Image Id: ").append(imageId).append("</li>");
+                html.append("<li>Content: ").append(content).append("</li><br/><hr/>");
             }
 
             html.append("</ul></body></html>");
@@ -50,7 +50,7 @@ public class ListServlet extends HttpServlet {
         } catch(Exception e){
             response.getWriter().print(e.getMessage());
         } finally{
-            DatabaseUtil.closeAll(conn, pStmt, rSet);
+            UtilDatabase.closeAll(conn, pStmt, rSet);
         }
     }
 }

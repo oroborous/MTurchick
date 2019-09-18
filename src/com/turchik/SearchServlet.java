@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 
-import static com.turchik.DatabaseUtil.*;
+import static com.turchik.UtilDatabase.*;
 
 @WebServlet(name = "SearchServlet",
             urlPatterns = "/search")
@@ -17,7 +17,7 @@ public class SearchServlet extends HttpServlet {
     private PreparedStatement pStmt;
     private ResultSet rSet;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try{
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
             String absPath = getServletContext().getRealPath("/WEB-INF/lib/dbNiceMiceWebApp");
@@ -36,12 +36,12 @@ public class SearchServlet extends HttpServlet {
                 String filepath = rSet.getString(2);
                 String title = rSet.getString(3);
                 String description = rSet.getString(4);
-                Boolean isFave = rSet.getBoolean(5);
-                html.append("<li>Image Id: "+imageId +"</li>");
-                html.append("<li>File Path: "+filepath +"</li>");
-                html.append("<li>Image Title: "+title +"</li>");
-                html.append("<li>Description: "+description +"</li>");
-                html.append("<li>Is Favorite: "+isFave.toString() +"</li>");
+                boolean isFave = rSet.getBoolean(5);
+                html.append("<li>Image Id: ").append(imageId).append("</li>");
+                html.append("<li>File Path: ").append(filepath).append("</li>");
+                html.append("<li>Image Title: ").append(title).append("</li>");
+                html.append("<li>Description: ").append(description).append("</li>");
+                html.append("<li>Is Favorite: ").append(isFave).append("</li>");
             }
 
             html.append("</ul></body></html>");
@@ -50,7 +50,7 @@ public class SearchServlet extends HttpServlet {
         } catch(Exception e){
             response.getWriter().print(e.getMessage());
         } finally{
-            DatabaseUtil.closeAll(conn, pStmt, rSet);
+            UtilDatabase.closeAll(conn, pStmt, rSet);
         }
     }
 }

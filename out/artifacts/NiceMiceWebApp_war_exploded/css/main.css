@@ -19,6 +19,13 @@
     width: 25%;
 }
 
+#gallery tbody tr td a img {
+    height: 100%;
+    width: 100%;
+    alignment: center;
+    padding: 2%;
+}
+
 #detail-image {
     height: 100%;
     width: 100%;
