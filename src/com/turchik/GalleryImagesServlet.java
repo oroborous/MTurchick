@@ -1,17 +1,16 @@
 package com.turchik;
 
-import javax.servlet.ServletException;
+import nicemice.utility.utilDatabase;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import static com.turchik.UtilDatabase.*;
+import static nicemice.utility.utilDatabase.*;
 
 @WebServlet(name = "GalleryImagesServlet", urlPatterns = "/galleryImages")
 public class GalleryImagesServlet extends HttpServlet {
@@ -47,7 +46,7 @@ public class GalleryImagesServlet extends HttpServlet {
         } catch (Exception e) {
             response.getWriter().print(e.getMessage());
         } finally {
-            UtilDatabase.closeAll(conn, stmt, rSet);
+            utilDatabase.closeAll(conn, stmt, rSet);
         }
     }
 }

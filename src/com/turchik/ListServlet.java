@@ -1,6 +1,7 @@
 package com.turchik;
 
-import javax.servlet.ServletException;
+import nicemice.utility.utilDatabase;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import static com.turchik.UtilDatabase.*;
+import static nicemice.utility.utilDatabase.*;
 
 @WebServlet(name = "ListServlet", urlPatterns = "/list")
 public class ListServlet extends HttpServlet {
@@ -50,7 +51,7 @@ public class ListServlet extends HttpServlet {
         } catch(Exception e){
             response.getWriter().print(e.getMessage());
         } finally{
-            UtilDatabase.closeAll(conn, pStmt, rSet);
+            utilDatabase.closeAll(conn, pStmt, rSet);
         }
     }
 }

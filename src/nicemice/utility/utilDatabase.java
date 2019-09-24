@@ -1,9 +1,11 @@
-package com.turchik;
+package nicemice.utility;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-@SuppressWarnings("WeakerAccess")
-public class UtilDatabase {
+public class utilDatabase {
     public static final String DRIVER_NAME = "jdbc:derby:";
     public static final String USERNAME = "mark";
     public static final String PASSWORD = "admin";

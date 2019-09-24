@@ -13,24 +13,6 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>ProfileFavoritesServlet</servlet-name>
-        <servlet-class>com.turchik.ProfileFavoritesServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ProfileFavoritesServlet</servlet-name>
-        <url-pattern>/profileFavorites</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>ProfileDetailsServlet</servlet-name>
-        <servlet-class>com.turchik.ProfileDetailsServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ProfileDetailsServlet</servlet-name>
-        <url-pattern>/profileDetails</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>CommentServlet</servlet-name>
         <servlet-class>com.turchik.CommentServlet</servlet-class>
     </servlet>
@@ -46,5 +28,15 @@
     <servlet-mapping>
         <servlet-name>GalleryImagesServlet</servlet-name>
         <url-pattern>/galleryImages</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ProfileController</servlet-name>
+        <servlet-class>nicemice.profile.ProfileController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProfileController</servlet-name>
+        <url-pattern>/profile</url-pattern>
     </servlet-mapping>
 </web-app>

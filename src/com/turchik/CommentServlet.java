@@ -1,10 +1,15 @@
 package com.turchik;
 
-import javax.servlet.annotation.WebServlet;
-import java.io.*;
-import java.sql.*;
+import nicemice.utility.utilDatabase;
 
-import static com.turchik.UtilDatabase.*;
+import javax.servlet.annotation.WebServlet;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import static nicemice.utility.utilDatabase.*;
 
 @WebServlet(name = "CommentServlet", urlPatterns = "/Comment")
 public class CommentServlet extends javax.servlet.http.HttpServlet {
@@ -40,7 +45,7 @@ public class CommentServlet extends javax.servlet.http.HttpServlet {
         } catch (Exception e) {
             response.getWriter().print(e.getMessage());
         } finally {
-            UtilDatabase.closeAll(conn, stmt, rSet);
+            utilDatabase.closeAll(conn, stmt, rSet);
         }
     }
 }
