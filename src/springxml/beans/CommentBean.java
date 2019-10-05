@@ -60,6 +60,10 @@ public class CommentBean implements IValidatedBean {
         Content = content;
     }
 
+    public String getValidationRules() {
+        return _validationService.GiveValidationExplanation();
+    }
+
     public boolean validateContent() {
         return _validationService.ValidateString(Content);
     }

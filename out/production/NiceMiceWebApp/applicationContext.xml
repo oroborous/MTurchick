@@ -16,4 +16,5 @@
         <property name="hostTypeCode" value="${p1.HostTypeCode}"/>
     </bean>
     <bean class="springxml.services.CommentValidationService" id="commentValidationService"/>
+    <bean class="springxml.services.ProfileValidationService" id="profileValidationService"/>
 </beans>

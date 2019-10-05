@@ -14,7 +14,8 @@ public class SpringApp {
         System.out.println("Content: " + comment.getContent());
         System.out.println("HostTypeCode: " + comment.getHostTypeCode());
         System.out.println("ImageId: " + comment.getImageId());
-        System.out.println("Content is valid(Ends with a period): " + comment.validateContent());
+        System.out.println("Validation Service Rule: " + comment.getValidationRules());
+        System.out.println("Content is valid: " + comment.validateContent());
 
         context.close();
     }
