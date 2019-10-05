@@ -1,28 +1,28 @@
 package springxml.beans;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import springxml.services.IValidationService;
 
-public class CommentBean {
+@Component
+public class CommentBean implements IValidatedBean {
     private int CommentId;
     private char HostTypeCode;
     private int ImageId;
     private String Content;
     private IValidationService _validationService;
 
+    @Autowired
+
     public CommentBean() {
-        CommentId = 0;
-        HostTypeCode = ' ';
-        ImageId = 0;
-        Content = "";
     }
 
-    public CommentBean(IValidationService _validationService) {
-        CommentId = 0;
-        HostTypeCode = ' ';
-        ImageId = 0;
-        Content = "";
+    public CommentBean(@Qualifier("commentValidationService") IValidationService _validationService) {
         this._validationService = _validationService;
+        System.out.println("THIS SUCKS");
     }
+
 
     public void set_validationService(IValidationService _validationService) {
         this._validationService = _validationService;

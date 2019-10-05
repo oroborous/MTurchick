@@ -1,4 +1,3 @@
-<%@ page import="nicemice.profile.ProfileController" %>
 <%@ page import="nicemice.profile.ProfileBean" %>
 <%--
   Created by IntelliJ IDEA.
@@ -22,15 +21,15 @@
 <body>
 <jsp:include page="/profile"/>
 <%! ProfileBean ProfileDetails; %>
-<%! String ImageTable;          %>
+<%! String ImageTable; %>
 <%
-    ProfileDetails = (ProfileBean)session.getAttribute("ProfileDetails");
-    ImageTable = (String)session.getAttribute("ImageTable");
+    ProfileDetails = (ProfileBean) session.getAttribute("ProfileDetails");
+    ImageTable = (String) session.getAttribute("ImageTable");
 %>
 <jsp:useBean class="nicemice.profile.ProfileBean" id="profile">
-    <jsp:setProperty name="profile" property="name" value="<%= ProfileDetails.getName() %>" />
-    <jsp:setProperty name="profile" property="favorite" value="<%= ProfileDetails.getFavorite() %>" />
-    <jsp:setProperty name="profile" property="motd" value="<%= ProfileDetails.getMotd() %>" />
+    <jsp:setProperty name="profile" property="name" value="<%= ProfileDetails.getName() %>"/>
+    <jsp:setProperty name="profile" property="favorite" value="<%= ProfileDetails.getFavorite() %>"/>
+    <jsp:setProperty name="profile" property="motd" value="<%= ProfileDetails.getMotd() %>"/>
 </jsp:useBean>
 <div class="container">
     <header class="row">
@@ -59,12 +58,14 @@
     <div class="row" id="body">
         <div class="col">
             <ul class="list">
-                <li><span id="name">Name: <jsp:getProperty name="profile" property="name" /></span></li>
-                <li><span id="fave">Favorite Animal: <jsp:getProperty name="profile" property="favorite" /></span></li>
-                <li><span id="motd">Message of the Day: <jsp:getProperty name="profile" property="motd" /></span></li>
-                <h5>
-                    Update Profile: <button class="btn btn-secondary" id="updTogBtn">Update</button>
-                </h5>
+                <li><span id="name">Name: <jsp:getProperty name="profile" property="name"/></span></li>
+                <li><span id="fave">Favorite Animal: <jsp:getProperty name="profile" property="favorite"/></span></li>
+                <li><span id="motd">Message of the Day: <jsp:getProperty name="profile" property="motd"/></span></li>
+                <li>
+                    <h5>Update Profile:
+                        <button class="btn btn-secondary" id="updTogBtn">Update</button>
+                    </h5>
+                </li>
             </ul>
             <ul class="list">
                 <li><h5>Favorite Pictures:</h5></li>
@@ -115,8 +116,8 @@
                     <li>
                         <form method="post" action="Comment">
                             <label for="comment">Comment:</label> <input id="comment" name="comment"
-                                                                            maxlength="100" minlength="10"
-                                                                            size="40" type="text" required>
+                                                                         maxlength="100" minlength="10"
+                                                                         size="40" type="text" required>
                             <button class="btn btn-secondary" id="createComBtn" type="submit">Post Comment</button>
                             <input type="hidden" value="p" name="hosttype" id="hosttype">
                         </form>
