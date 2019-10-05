@@ -1,11 +1,11 @@
 package springxml.services;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class CommentValidationService implements IValidationService {
     @Override
     public boolean ValidateString(String content) {
-        return false;
+        return content.charAt(content.length() - 1) == '.';
     }
 }

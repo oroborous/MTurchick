@@ -1,8 +1,8 @@
 package springxml.services;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class ProfileValidationService implements IValidationService {
     @Override
     public boolean ValidateString(String content) {
