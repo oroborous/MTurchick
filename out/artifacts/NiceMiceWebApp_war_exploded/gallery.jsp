@@ -5,7 +5,7 @@
   Time: 8:13 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %><!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" %><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,7 +25,7 @@
     <nav class="row navbar navbar-expand navbar-dark bg-primary">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="orig_index.html">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="gallery.html">Gallery</a>
