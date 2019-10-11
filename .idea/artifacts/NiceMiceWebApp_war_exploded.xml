@@ -15,6 +15,9 @@
           </element>
           <element id="library" level="project" name="Spring-4.3.18.RELEASE" />
           <element id="library" level="project" name="Spring MVC-4.3.18.RELEASE" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/taglibs-standard-compat-1.2.5.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/taglibs-standard-impl-1.2.5.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/taglibs-standard-spec-1.2.5.jar" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="NiceMiceWebApp/web/Web" />
