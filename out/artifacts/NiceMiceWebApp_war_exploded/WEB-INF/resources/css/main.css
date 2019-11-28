@@ -3,6 +3,7 @@
 }
 
 .gal-image {
+    height: 100%;
     max-height: 150px;
     width: 100%;
     alignment: center;
@@ -35,4 +36,9 @@
 #pro-fav-images tbody tr td img {
     height: 100px;
     width: 100px;
+}
+
+.error{
+    color: orangered;
+    font-style: italic;
 }

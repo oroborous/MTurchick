@@ -20,7 +20,7 @@
 </head>
 <body>
 <div class="container">
-    <%@include file="header.jsp"%>
+    <%@include file="header.jsp" %>
     <div class="row" id="body">
         <div class="col-4">
             <p class="row justify-content-center">Accepting environment of mouse enthusiasts</p>
@@ -28,7 +28,7 @@
             <p class="row justify-content-center">Loving and caring about our little friends</p>
         </div>
     </div>
-    <%@include file="footer.jsp"%>
+    <%@include file="footer.jsp" %>
 </div>
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

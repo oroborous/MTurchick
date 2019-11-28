@@ -3,9 +3,12 @@ package springmvc.Controller;
 import com.turchik.hibernate.entity.Comment;
 import com.turchik.hibernate.entity.Profile;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,10 +36,7 @@ public class ProfileController {
                                 Model model) {
         if (bindingResult.hasErrors()) {
             System.out.println(bindingResult);
-            model.addAttribute("profile", profile);
-            model.addAttribute("new_comment", new Comment());
-            model.addAttribute("del_comment", new Comment());
-            return "profile";
+            return "redirect:/profile";
         }
 
         profileService.saveProfile(profile);
@@ -53,6 +53,14 @@ public class ProfileController {
 
         profileService.addComment(comment);
         return "redirect:/profile";
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+        // Trim whitespace from all string form parameters read by this controller
+        // If the entire string is whitespace, trim it to null
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
 }

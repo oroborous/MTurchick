@@ -3,9 +3,11 @@ package springmvc.Controller;
 import com.turchik.hibernate.entity.Comment;
 import com.turchik.hibernate.entity.Image;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import springmvc.Service.IImageService;
 import springmvc.Service.IProfileService;
@@ -35,10 +37,13 @@ public class ImageController {
 
     @PostMapping("/addImageComment")
     public String addImageComment(@Valid @ModelAttribute Comment comment,
-                                  BindingResult bindingResult) {
+                                  BindingResult bindingResult,
+                                  Model model) {
         if (bindingResult.hasErrors()) {
             System.out.println(bindingResult);
-            return "redirect:/detail?imgId=" + comment.getImage().getId();
+            model.addAttribute("image", comment.getImage());
+            model.addAttribute("new_comment", comment);
+            return "detail";
         }
 
         imageService.addComment(comment);
@@ -62,5 +67,14 @@ public class ImageController {
         image.removeFavorite(profileId);
         imageService.saveImage(image);
         return "redirect:/detail?imgId=" + imageId;
+    }
+
+
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+        // Trim whitespace from all string form parameters read by this controller
+        // If the entire string is whitespace, trim it to null
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 }

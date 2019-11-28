@@ -1,12 +1,10 @@
 $(document).ready(function () {
     $('#edit').toggle();
 
-    $('#updTogBtn').on('click', ToggleProfileFields);
+    $('#updTogBtn').on('click', function () {
+        //input fields
+        $('#edit').toggle();
+        //profile detail
+        $('#profile-comment-list').toggle();
+    });
 });
-
-function ToggleProfileFields() {
-    //profile detail
-    $('#comments').toggle();
-    //input fields
-    $('#edit').toggle();
-}

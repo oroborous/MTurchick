@@ -41,32 +41,28 @@
                 </c:choose>
                 <h3>Title: ${image.title}</h3>
             </div>
+            <p class="row">Description: ${image.description}</p>
             <div class="row">
                 <img alt="detail-image" id="detail-image" src="resources/img/${image.fileName}">
             </div>
-            <p class="row">Description: ${image.description}</p>
         </div>
         <div class="col ml-3">
             <div class="row" id="comments">
-                <h4>Message Board</h4>
                 <form:form method="post"
                            action="${pageContext.request.contextPath}/addImageComment"
                            modelAttribute="new_comment" cssClass="col">
                     <form:hidden path="image" value="${image.id}"/>
+                    <h4 class="row">Message Board</h4>
                     <div class="row">
-                        <label for="comment">Comment:</label>
-                        <form:input id="comment" name="comment"
-                                    path="content"
-                                    maxlength="100" minlength="10"
-                                    size="50"
-                                    type="text"/>
+                        <label>Comment:</label>
+                        <form:input path="content" size="50"/>
+                        <form:errors path="content" cssClass="error"/>
                     </div>
                     <div class="row mt-2">
-                        <button class="btn-small btn-secondary"
-                                id="createComBtn"
-                                type="submit">
-                            Post Comment
-                        </button>
+                        <input class="btn-small btn-secondary"
+                               id="createComBtn"
+                               type="submit"
+                               value="Post Comment">
                     </div>
                 </form:form>
                 <ol class="list" id="profile-comment-list">

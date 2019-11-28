@@ -1,6 +1,8 @@
 package com.turchik.hibernate.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "COMMENT")
@@ -9,6 +11,8 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COMMENTID")
     private int Id;
+    @NotNull(message = "Required")
+    @Size(min = 10, message = "Comment must have substantial content.")
     @Column(name = "CONTENT")
     private String Content;
     //The cascade type used here includes all but delete, as the parent (Profile) should be updated without

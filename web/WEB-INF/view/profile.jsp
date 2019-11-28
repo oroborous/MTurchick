@@ -53,73 +53,59 @@
                        modelAttribute="profile"
                        id="edit" class="row">
                 <form:hidden path="id"/>
+                <form:hidden path="images"/>
+                <form:hidden path="comments"/>
                 <div class="col">
                     <p class="row">
-                        <label for="ed-name">Name:</label>
-                        <form:input id="ed-name"
-                                    maxlength="20"
-                                    minlength="3"
-                                    name="ed-name"
-                                    size="40"
-                                    type="text" path="name"/>
+                        <label class="mr-2">Name:</label>
+                        <form:input path="name" size="50"/>
+                        <form:errors path="name" cssClass="error"/>
                     </p>
                     <p class="row">
-                        <label for="ed-fave">Favorite Animal:</label>
-                        <form:input id="ed-fave"
-                                    maxlength="20"
-                                    minlength="3"
-                                    name="ed-fave"
-                                    size="40"
-                                    type="text" path="favorite"/>
+                        <label class="mr-2">Favorite Animal:</label>
+                        <form:input path="favorite" size="42"/>
+                        <form:errors path="favorite" cssClass="error"/>
                     </p>
                     <p class="row">
-                        <label for="ed-motd">Motto:</label>
-                        <form:input id="ed-motd"
-                                    maxlength="50"
-                                    minlength="5"
-                                    name="ed-motd"
-                                    size="35"
-                                    type="text" path="motto"/>
+                        <label class="mr-2">Motto:</label>
+                        <form:input path="motto" size="50"/>
+                        <form:errors path="motto" cssClass="error"/>
                     </p>
                     <h5 class="row">
                         <button class="btn-small btn-secondary" id="ed-btn" type="submit">Submit Changes</button>
                     </h5>
                 </div>
             </form:form>
-            <div class="row" id="comments">
+            <form:form method="post" action="${pageContext.request.contextPath}/addProfileComment"
+                       modelAttribute="new_comment" id="profile-comment-list" cssClass="row">
+                <form:hidden path="profile" value="${profile.id}"/>
                 <div class="col">
                     <h4 class="row">Message Board</h4>
-                    <form:form method="post" action="${pageContext.request.contextPath}/addProfileComment"
-                               modelAttribute="new_comment" cssClass="col">
-                        <form:hidden path="profile" value="${profile.id}"/>
-                        <div class="row">
-                            <label for="comment">Comment:</label>
-                            <form:input id="comment" name="comment"
-                                        path="content"
-                                        maxlength="100" minlength="10"
-                                        size="50"
-                                        type="text"/>
-                        </div>
-                        <div class="row mt-2">
-                            <button class="btn-small btn-secondary"
-                                    id="createComBtn"
-                                    type="submit">
-                                Post Comment
-                            </button>
-                        </div>
-                    </form:form>
-                    <ol class="list" id="profile-comment-list">
-                        <c:forEach var="cmnt" items="${profile.comments}">
-                            <c:url var="deleteLink" value="/removeProfileComment">
-                                <c:param name="commentId" value="${cmnt.id}"/>
-                            </c:url>
-                            <li>
-                                <a href="${deleteLink}">[ :( ]</a>~${cmnt.content}
-                            </li>
-                        </c:forEach>
-                    </ol>
+                    <div class="row">
+                        <label class="mr-2">Comment:</label>
+                        <form:input path="content" size="50"/>
+                        <form:errors path="content" cssClass="error"/>
+                    </div>
+                    <div class="row mt-2">
+                        <input class="btn-small btn-secondary"
+                               id="createComBtn"
+                               type="submit"
+                               value="Post Comment">
+                    </div>
+                    <div class="row">
+                        <ol class="list">
+                            <c:forEach var="cmnt" items="${profile.comments}">
+                                <c:url var="deleteLink" value="/removeProfileComment">
+                                    <c:param name="commentId" value="${cmnt.id}"/>
+                                </c:url>
+                                <li>
+                                    <a href="${deleteLink}">[ :( ]</a>~${cmnt.content}
+                                </li>
+                            </c:forEach>
+                        </ol>
+                    </div>
                 </div>
-            </div>
+            </form:form>
         </div>
     </div>
     <%@include file="footer.jsp" %>
