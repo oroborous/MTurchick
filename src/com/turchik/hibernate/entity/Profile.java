@@ -101,23 +101,19 @@ public class Profile {
     public void addFavorite(Image image) {
         if (imagesFavorited == null)
             imagesFavorited = new ArrayList<>();
-        imagesFavorited.add(image);
-        //Reverse set image to comment
-        image.addFavorite(this);
+
+        if (!imagesFavorited.contains(image)) {
+            imagesFavorited.add(image);
+            //Reverse set image to comment
+            image.addFavorite(this);
+        }
     }
 
-    public boolean removeFavorite(int id) {
+    public void removeFavorite(int id) {
         if (imagesFavorited == null)
             imagesFavorited = new ArrayList<>();
-        for (Image img :
-                imagesFavorited) {
-            if (img.getId() == id) {
-                imagesFavorited.remove(img);
-                //img.removeFavorite(this.id); <todo: may needto do reverse?
-                return true;
-            }
-        }
-        return false;
+
+        imagesFavorited.removeIf((image) -> image.getId() == id);
     }
 
     @Override

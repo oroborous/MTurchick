@@ -101,9 +101,28 @@ public class Image {
     public void addFavorite(Profile profile) {
         if (FavoritedBy == null)
             FavoritedBy = new ArrayList<>();
-        FavoritedBy.add(profile);
-        //Reverse set image to comment
-        profile.addFavorite(this);
+
+        if (!FavoritedBy.contains(profile)) {
+            FavoritedBy.add(profile);
+            //Reverse set image to comment
+            profile.addFavorite(this);
+        }
+    }
+
+    public void removeFavorite(int id) {
+        if (FavoritedBy == null)
+            FavoritedBy = new ArrayList<>();
+
+        FavoritedBy.removeIf((profile) -> profile.getId() == id);
+    }
+
+    public boolean isFavoriteBy(int profileId) {
+        for (var profile :
+                FavoritedBy) {
+            if (profile.getId() == profileId)
+                return true;
+        }
+        return false;
     }
 
     @Override

@@ -28,4 +28,18 @@ public class ImageService implements IImageService {
     public Image getImage(int id) {
         return imageData.getImage(id);
     }
+
+    @Override
+    public void saveImage(Image i) {
+        imageData.saveImage(i);
+    }
+
+    @Override
+    public void addComment(Comment c) {
+        if (c.getImage() != null) {
+            c.getImage().addComment(c);
+            imageData.saveImage(c.getImage());
+        }
+    }
+
 }
