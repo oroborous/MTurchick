@@ -37,7 +37,7 @@
         <div class="col-4">
             <p class="row justify-content-center">Accepting environment of mouse enthusiasts</p>
             <p class="row justify-content-center">Share art related to your lovable rodent</p>
-            <p class="row justify-content-center">Loving and caring about <strong>SPRING MVC</strong></p>
+            <p class="row justify-content-center">Loving and caring about <strong>SPRING MVC AND HIBERNATE</strong></p>
         </div>
     </div>
     <footer class="row">

@@ -20,8 +20,18 @@ public class Profile {
     //Cascade type must be all as the PK of Profile is found in Comments.
     //If Profile is deleted, then if comments are not deleted, there will be orphans. (And orphans make me sad)
     @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "Profile")
+            mappedBy = "Profile", fetch = FetchType.EAGER)
     private List<Comment> Comments;
+
+    @ManyToMany(cascade = {CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH},
+            fetch = FetchType.EAGER)
+    @JoinTable(name = "FAVORITE_IMAGES",
+            joinColumns = @JoinColumn(name = "PROFILEID"),
+            inverseJoinColumns = @JoinColumn(name = "IMAGEID"))
+    private List<Image> imagesFavorited;
 
     public Profile() {
     }
@@ -78,6 +88,36 @@ public class Profile {
         Comments.add(comment);
         //Reverse set image to profile
         comment.setProfile(this);
+    }
+
+    public List<Image> getImages() {
+        return imagesFavorited;
+    }
+
+    public void setImages(List<Image> imagesFavorited) {
+        this.imagesFavorited = imagesFavorited;
+    }
+
+    public void addFavorite(Image image) {
+        if (imagesFavorited == null)
+            imagesFavorited = new ArrayList<>();
+        imagesFavorited.add(image);
+        //Reverse set image to comment
+        image.addFavorite(this);
+    }
+
+    public boolean removeFavorite(int id) {
+        if (imagesFavorited == null)
+            imagesFavorited = new ArrayList<>();
+        for (Image img :
+                imagesFavorited) {
+            if (img.getId() == id) {
+                imagesFavorited.remove(img);
+                //img.removeFavorite(this.id); <todo: may needto do reverse?
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

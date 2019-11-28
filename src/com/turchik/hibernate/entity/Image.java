@@ -20,8 +20,18 @@ public class Image {
     //Cascade type must be all as the PK of Image is found in Comments.
     //If Image is deleted, then if comments are not deleted, there will be orphans. (And orphans make me sad)
     @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "Image")
+            mappedBy = "Image", fetch = FetchType.EAGER)
     private List<Comment> Comments;
+
+    @ManyToMany(cascade = {CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH},
+            fetch = FetchType.EAGER)
+    @JoinTable(name = "FAVORITE_IMAGES",
+            joinColumns = @JoinColumn(name = "IMAGEID"),
+            inverseJoinColumns = @JoinColumn(name = "PROFILEID"))
+    private List<Profile> FavoritedBy;
 
     public Image() {
     }
@@ -78,6 +88,22 @@ public class Image {
         Comments.add(comment);
         //Reverse set image to comment
         comment.setImage(this);
+    }
+
+    public List<Profile> getFavoritedBy() {
+        return FavoritedBy;
+    }
+
+    public void setFavoritedBy(List<Profile> favoritedBy) {
+        FavoritedBy = favoritedBy;
+    }
+
+    public void addFavorite(Profile profile) {
+        if (FavoritedBy == null)
+            FavoritedBy = new ArrayList<>();
+        FavoritedBy.add(profile);
+        //Reverse set image to comment
+        profile.addFavorite(this);
     }
 
     @Override

@@ -45,19 +45,19 @@ public class Comment {
         Content = content;
     }
 
-    public com.turchik.hibernate.entity.Image getImage() {
+    public Image getImage() {
         return Image;
     }
 
-    public void setImage(com.turchik.hibernate.entity.Image image) {
+    public void setImage(Image image) {
         Image = image;
     }
 
-    public com.turchik.hibernate.entity.Profile getProfile() {
+    public Profile getProfile() {
         return Profile;
     }
 
-    public void setProfile(com.turchik.hibernate.entity.Profile profile) {
+    public void setProfile(Profile profile) {
         Profile = profile;
     }
 
