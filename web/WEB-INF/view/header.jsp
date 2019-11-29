@@ -19,7 +19,7 @@
 <nav class="row navbar navbar-expand navbar-dark bg-primary">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-            <a class="nav-link active" href="${pageContext.request.contextPath}/">Home</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="${pageContext.request.contextPath}/gallery">Gallery</a>

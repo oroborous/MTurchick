@@ -1,5 +1,6 @@
 <%--suppress HtmlUnknownTarget --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
@@ -16,6 +17,13 @@
 <body>
 <div class="container">
     <%@include file="header.jsp" %>
+    <div class="row">
+        <form:form action="${pageContext.request.contextPath}/searchImages" method="GET" cssClass="my-2">
+            <label for="searchTerm">Search images by title:</label>
+            <input type="search" id="searchTerm" name="searchTerm" class="mr-2"/>
+            <input type="submit" value="Search" class="btn-small btn-info"/>
+        </form:form>
+    </div>
     <div class="row">
         <c:forEach var="image" items="${images}">
             <c:url var="detailLink" value="/detail">

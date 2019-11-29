@@ -6,6 +6,7 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("WeakerAccess")
 @Entity
 @Table(name = "PROFILE")
 public class Profile {
@@ -13,14 +14,17 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PROFILEID")
     private int Id;
+
     @NotNull(message = "Required")
     @Size(min = 5, max = 30, message = "Must be between 5 and 30.")
     @Column(name = "NAME")
     private String Name;
+
     @NotNull(message = "Required")
     @Size(min = 5, max = 50, message = "Must be between 5 and 50.")
     @Column(name = "MOTTO")
     private String Motto;
+
     @NotNull(message = "Required")
     @Size(min = 5, max = 30, message = "Must be between 5 and 30.")
     @Column(name = "FAVORITE")

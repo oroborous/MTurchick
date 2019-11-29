@@ -13,6 +13,8 @@ import springmvc.Service.IImageService;
 import springmvc.Service.IProfileService;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class ImageController {
@@ -69,6 +71,19 @@ public class ImageController {
         return "redirect:/detail?imgId=" + imageId;
     }
 
+    @GetMapping("/searchImages")
+    public String searchImages(@RequestParam String searchTerm,
+                               Model model) {
+        var images = imageService.getImages();
+        List<Image> matching = new ArrayList<>();
+        for (var img :
+                images) {
+            if (img.getTitle().contains(searchTerm))
+                matching.add(img);
+        }
+        model.addAttribute("images", matching);
+        return "gallery";
+    }
 
     @InitBinder
     public void initBinder(WebDataBinder dataBinder) {
