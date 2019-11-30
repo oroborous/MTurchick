@@ -11,15 +11,18 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COMMENTID")
     private int Id;
+
     @NotNull(message = "Required")
     @Size(min = 10, message = "Comment must have substantial content.")
     @Column(name = "CONTENT")
     private String Content;
+
     //The cascade type used here includes all but delete, as the parent (Profile) should be updated without
     //  the deleted comment, but we shouldn't delete the parent along with the comment.
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "IMAGEID")
     private Image Image;
+
     //The cascade type used here includes all but delete, as the parent (Image) should be updated without
     //  the deleted comment, but we shouldn't delete the parent along with the comment.
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})

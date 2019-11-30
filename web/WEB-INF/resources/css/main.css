@@ -41,4 +41,5 @@
 .error {
     color: orangered;
     font-style: italic;
+    font-size: small;
 }

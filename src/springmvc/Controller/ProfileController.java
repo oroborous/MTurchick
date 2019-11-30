@@ -4,14 +4,12 @@ import com.turchik.hibernate.entity.Comment;
 import com.turchik.hibernate.entity.Profile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import springmvc.Service.IProfileService;
 
 import javax.validation.Valid;
@@ -25,8 +23,7 @@ public class ProfileController {
     public String showProfile(Model model) {
         var profile = profileService.getProfile(102);
         model.addAttribute("profile", profile);
-        model.addAttribute("new_comment", new Comment());
-        model.addAttribute("del_comment", new Comment());
+        model.addAttribute("comment", new Comment());
         return "profile";
     }
 
@@ -35,20 +32,28 @@ public class ProfileController {
                                 BindingResult bindingResult,
                                 Model model) {
         if (bindingResult.hasErrors()) {
-            System.out.println(bindingResult);
-            return "redirect:/profile";
+            var dbProf = profileService.getProfile(profile.getId());
+            profile.setImages(dbProf.getImages());
+            profile.setComments(dbProf.getComments());
+            model.addAttribute("profile", profile);
+            model.addAttribute("comment", new Comment());
+            return "profile";
         }
 
+        var dbProf = profileService.getProfile(profile.getId());
+        profile.setImages(dbProf.getImages());
+        profile.setComments(dbProf.getComments());
         profileService.saveProfile(profile);
         return "redirect:/profile";
     }
 
     @PostMapping("/addProfileComment")
-    public String addProfileComment(@Valid @ModelAttribute Comment comment,
-                                    BindingResult bindingResult) {
+    public String addProfileComment(@Valid @ModelAttribute("comment") Comment comment,
+                                    BindingResult bindingResult,
+                                    Model model) {
         if (bindingResult.hasErrors()) {
-            System.out.println(bindingResult);
-            return "redirect:/profile";
+            model.addAttribute("profile", comment.getProfile());
+            return "profile";
         }
 
         profileService.addComment(comment);
@@ -63,4 +68,9 @@ public class ProfileController {
         dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public void handle(Exception e) {
+        e.printStackTrace();
+    }
 }

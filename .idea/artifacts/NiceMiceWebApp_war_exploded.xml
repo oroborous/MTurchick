@@ -22,6 +22,7 @@
           <element id="library" level="project" name="Hibernate 5.4.5-5.4.5" />
           <element id="library" level="project" name="org.hibernate:hibernate-validator:4.2.0.Final" />
           <element id="library" level="project" name="c3p0:c3p0:0.9.1.2" />
+          <element id="library" level="project" name="javax.annotation:javax.annotation-api:1.3.2" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="NiceMiceWebApp/web/Web" />

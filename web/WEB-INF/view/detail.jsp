@@ -54,8 +54,8 @@
                     <form:hidden path="image" value="${image.id}"/>
                     <h4 class="row">Message Board</h4>
                     <div class="row">
-                        <label>Comment:</label>
-                        <form:input path="content" size="50"/>
+                        <label for="comment">Comment:</label>
+                        <form:input path="content" id="comment" size="50"/>
                         <form:errors path="content" cssClass="error"/>
                     </div>
                     <div class="row mt-2">

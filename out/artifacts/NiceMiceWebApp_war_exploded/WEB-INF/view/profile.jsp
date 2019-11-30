@@ -53,8 +53,6 @@
                        modelAttribute="profile"
                        id="edit" class="row">
                 <form:hidden path="id"/>
-                <form:hidden path="images"/>
-                <form:hidden path="comments"/>
                 <div class="col">
                     <p class="row">
                         <label class="mr-2">Name:</label>
@@ -77,7 +75,7 @@
                 </div>
             </form:form>
             <form:form method="post" action="${pageContext.request.contextPath}/addProfileComment"
-                       modelAttribute="new_comment" id="profile-comment-list" cssClass="row">
+                       modelAttribute="comment" id="profile-comment-list" cssClass="row">
                 <form:hidden path="profile" value="${profile.id}"/>
                 <div class="col">
                     <h4 class="row">Message Board</h4>

@@ -16,7 +16,4 @@ public interface IImageService {
 
     void addComment(Comment c);
 
-    //todo: I don't want to implement these methods for images just yet... lot of work
-    //void saveImage(Image i);
-    //void deleteImage(int id);
 }
