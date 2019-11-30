@@ -1,0 +1,45 @@
+.logo {
+    height: 50px;
+}
+
+.gal-image {
+    height: 100%;
+    max-height: 150px;
+    width: 100%;
+    alignment: center;
+    justify-content: center;
+    padding: 2%;
+}
+
+.list li {
+    padding: .5em;
+    list-style: none;
+}
+
+#gallery tbody tr td {
+    height: 250px;
+    width: 25%;
+}
+
+#gallery tbody tr td a img {
+    height: 100%;
+    width: 100%;
+    alignment: center;
+    padding: 2%;
+}
+
+#detail-image {
+    height: 100%;
+    width: 100%;
+}
+
+#pro-fav-images tbody tr td img {
+    height: 100px;
+    width: 100px;
+}
+
+.error {
+    color: orangered;
+    font-style: italic;
+    font-size: small;
+}

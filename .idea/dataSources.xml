@@ -6,7 +6,7 @@
       <synchronize>true</synchronize>
       <remarks>Nice Mice</remarks>
       <jdbc-driver>org.apache.derby.jdbc.EmbeddedDriver</jdbc-driver>
-      <jdbc-url>jdbc:derby:$PROJECT_DIR$/out/artifacts/NiceMiceWebApp_war_exploded/WEB-INF/lib/dbNiceMiceWebApp</jdbc-url>
+      <jdbc-url>jdbc:derby:$PROJECT_DIR$/lib/dbNiceMiceWebApp</jdbc-url>
     </data-source>
   </component>
 </project>
